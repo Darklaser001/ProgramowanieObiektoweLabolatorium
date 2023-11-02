@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lab2.Constructions.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace Lab2.Constructions
 {
     class Construction
     {
-        public Construction(double height, double width, int entrances, int humanCapacity, string buildMaterial)
+        public Construction(double height, double width, int entrances, int humanCapacity, BuildMaterialType buildMaterial)
         {
             this.Height = height;
             this.Width = width;
@@ -20,8 +21,61 @@ namespace Lab2.Constructions
         public double Width { get; set; }
         public int Entrances { get; set; }
         public int HumanCapacity { get; set; }
-        public string BuildMaterial { get; set; }
+        public BuildMaterialType BuildMaterial {
+            get
+            {
+                return _buildMaterial;
+            }
+            set
+            {
+/*
+                if(value == string.Empty)
+                {
+                    throw new ArgumentNullException();
+                }
+                _buildMaterial = value;
+*/
+            }
+        }
+        private BuildMaterialType _buildMaterial { get; set; }
+
+        public Construction()
+        {
+            this.Height = 6;
+            this.Width = 1;
+            this.Entrances = 9;
+            this.HumanCapacity = 13;
+            this.BuildMaterial = BuildMaterialType.Wood;
+        }
+
+        public Construction(CreateConstructionDto input)
+        {
+            this.Height = input.Height;
+            this.Width = input.Width;
+            this.Entrances = input.Entrances;
+            this.HumanCapacity = input.HumanCapacity;
+            this.BuildMaterial = BuildMaterialType.Wood;
+        }
+
+        public double GetSquareCost()
+        {
+            var x = 0.0;
+            if (_buildMaterial == BuildMaterialType.Concrete)
+            {
+                x = 0.87;
+            }
+            if (_buildMaterial == BuildMaterialType.Brick)
+            {
+                x = 0.8;
+            }
+            if (_buildMaterial == BuildMaterialType.Wood)
+            {
+                x = 0.78;
+            }
+            return Width * Height * 0.9 * x;
+        }
     }
+
 }
 
 /*
