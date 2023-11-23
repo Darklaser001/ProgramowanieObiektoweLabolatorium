@@ -28,13 +28,14 @@ namespace Lab2.Constructions
             }
             set
             {
-/*
-                if(value == string.Empty)
-                {
-                    throw new ArgumentNullException();
-                }
+                /*
+                                if(value == string.Empty)
+                                {
+                                    throw new ArgumentNullException();
+                                }
+                                _buildMaterial = value;
+                */
                 _buildMaterial = value;
-*/
             }
         }
         private BuildMaterialType _buildMaterial { get; set; }

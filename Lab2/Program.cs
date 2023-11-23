@@ -1,6 +1,9 @@
 ﻿using Lab2.Constructions;
+using Lab2.IndustrialHalls;
+using Lab2.ResidentalBuildings;
 using Lab2.Constructions.Models;
 using System;
+using Lab2.BuildingWrappers;
 
 namespace Lab2
 {
@@ -42,6 +45,24 @@ namespace Lab2
             Console.WriteLine(construction.Entrances);
 
             Console.WriteLine("koszt: " + construction.GetSquareCost());
+
+
+            var industrialHall = new IndustrialHall();
+            var residentalBuilding = new ResidentalBuilding(2);
+
+            Console.WriteLine(industrialHall.BuildMaterial);
+            Console.WriteLine(industrialHall.Height);
+            Console.WriteLine(industrialHall.Width);
+            Console.WriteLine(residentalBuilding.BuildMaterial);
+            Console.WriteLine(residentalBuilding.Height);
+            Console.WriteLine(residentalBuilding.Width);
+
+            var buildingWrapperOne = new BuildingWrapper(industrialHall);
+            var buildingWrapperTwo = new BuildingWrapper(residentalBuilding);
+
+            Console.WriteLine(buildingWrapperOne.GetWrappedSquareCost());
+
+
         }
     }
 }
