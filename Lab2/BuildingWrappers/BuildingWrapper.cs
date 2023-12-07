@@ -17,7 +17,17 @@ namespace Lab2.BuildingWrappers
 
         public double GetWrappedSquareCost()
         {
-            return _construction.GetSquareCost();
+            return _construction.CalculateSquareCost();
         }
+        public void WrappedDisplayCostDetails()
+        {
+            _construction.DisplayCostDetails();
+        }
+
+        public void WrappedDisplayConstructionInfo()
+        {
+            _construction.DisplayConstructionInfo();
+        }
+
     }
 }

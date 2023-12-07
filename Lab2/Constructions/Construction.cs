@@ -1,4 +1,5 @@
 ﻿using Lab2.Constructions.Models;
+using Lab2.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Lab2.Constructions
 {
-    class Construction
+    class Construction: ISquareCost, IConstructionInfo
     {
         public Construction(double height, double width, int entrances, int humanCapacity, BuildMaterialType buildMaterial)
         {
@@ -17,6 +18,7 @@ namespace Lab2.Constructions
             this.HumanCapacity = humanCapacity;
             this.BuildMaterial = buildMaterial;
         }
+
         public double Height { get; set; }
         public double Width { get; set; }
         public int Entrances { get; set; }
@@ -74,6 +76,23 @@ namespace Lab2.Constructions
                 x = 0.78;
             }
             return Width * Height * 0.9 * x;
+        }
+
+        public double CalculateSquareCost()
+        {
+            return GetSquareCost();
+        }
+
+        public void DisplayCostDetails()
+        {
+            Console.WriteLine($"Square cost details for the building:");
+            Console.WriteLine($"Height: {Height}, Width: {Width}, Entrances:{ Entrances}, Human Capacity: { HumanCapacity}, Build Material:{ BuildMaterial}");
+            Console.WriteLine($"Square Cost: {CalculateSquareCost()}");
+        }
+
+        public void DisplayConstructionInfo()
+        {
+            Console.WriteLine($"Construction information for the building: "); Console.WriteLine($"Height: {Height}, Width: {Width}, Entrances: { Entrances}, Human Capacity: { HumanCapacity}, Build Material: { BuildMaterial}");
         }
     }
 

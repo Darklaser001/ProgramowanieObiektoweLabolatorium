@@ -4,6 +4,7 @@ using Lab2.ResidentalBuildings;
 using Lab2.Constructions.Models;
 using System;
 using Lab2.BuildingWrappers;
+using Lab2.CommercialBuildings;
 
 namespace Lab2
 {
@@ -11,7 +12,7 @@ namespace Lab2
     {
         static void Main(string[] args)
         {
-            var construction = new Construction(12, 34, 5, 6, BuildMaterialType.Wood);
+            var construction = new Construction(12, 34, 5, 6, BuildMaterialType.Wood, "lol");
 
             Console.WriteLine(construction.BuildMaterial);
             Console.WriteLine(construction.Height);
@@ -62,6 +63,11 @@ namespace Lab2
 
             Console.WriteLine(buildingWrapperOne.GetWrappedSquareCost());
 
+            var commercialBuilding = new CommercialBuilding(12, 34, 5, 6, BuildMaterialType.Wood, "hello");
+            commercialBuilding.OpenBusiness();
+            Console.WriteLine(commercialBuilding.BuildMaterial);
+            Console.WriteLine(commercialBuilding.Height);
+            Console.WriteLine(commercialBuilding.Width);
 
         }
     }
